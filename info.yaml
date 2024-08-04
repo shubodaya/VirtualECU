@@ -1,0 +1,141 @@
+controllers:
+  "7B8":
+    name: Infotainment
+    services:
+      "01":
+        name: Media Control
+        parameters:
+          "05":
+            name: Media Status
+            action:
+              generator: "constant(1.0) andThen unsignedInteger(1)"
+          "01":
+            name: Media Volume
+            action:
+              generator: "linear(0, 1.hour) andThen gaussianRandom(50, 10) andThen lowCut(0) andThen highCut(100) andThen unsignedInteger(1)"
+          "02":
+            name: Media Track
+            action:
+              generator: "linear(1, 1.hour) andThen gaussianRandom(0, 2) andThen lowCut(1) andThen highCut(100) andThen unsignedInteger(1)"
+          "03":
+            name: Media Source
+            action:
+              generator: "constant(2.0) andThen unsignedInteger(1)"
+          "04":
+            name: Media Play/Pause
+            action:
+              generator: "constant(1.0) andThen unsignedInteger(1)"
+      "02":
+        name: Navigation
+        parameters:
+          "10":
+            name: GPS Latitude
+            action:
+              generator: "sine(1.minute) andThen scale(90) andThen shift(-90) andThen unsignedInteger(1)"
+          "11":
+            name: GPS Longitude
+            action:
+              generator: "sine(1.minute) andThen scale(180) andThen shift(-180) andThen unsignedInteger(1)"
+          "12":
+            name: GPS Speed
+            action:
+              generator: "linear(0, 100.hours) andThen gaussianRandom(0, 5) andThen lowCut(0) andThen highCut(200) andThen unsignedInteger(1)"
+          "13":
+            name: GPS Heading
+            action:
+              generator: "constant(1.0) andThen unsignedInteger(1)"
+      "03":
+        name: System Diagnostics
+        parameters:
+          "20":
+            name: Battery Voltage
+            action:
+              generator: "sine(30.seconds) andThen scale(12.0) andThen shift(1.0) andThen unsignedInteger(1)"
+          "21":
+            name: CPU Temperature
+            action:
+              generator: "constant(60.0) andThen unsignedInteger(1)"
+          "22":
+            name: System Uptime
+            action:
+              generator: "constant(1.0) andThen unsignedInteger(1)"
+          "23":
+            name: Error Code
+            action:
+              generator: "constant(0.0) andThen unsignedInteger(1)"
+          "24":
+            name: System Status
+            action:
+              generator: "constant(1.0) andThen unsignedInteger(1)"
+      "04":
+        name: Connectivity
+        parameters:
+          "30":
+            name: Bluetooth Status
+            action:
+              generator: "constant(1.0) andThen unsignedInteger(1)"
+          "31":
+            name: WiFi Status
+            action:
+              generator: "constant(0.0) andThen unsignedInteger(1)"
+          "32":
+            name: Network Signal Strength
+            action:
+              generator: "sine(1.minute) andThen scale(50) andThen lowCut(-100) andThen highCut(0) andThen unsignedInteger(1)"
+          "33":
+            name: Network Data Usage
+            action:
+              generator: "linear(0, 1.hour) andThen gaussianRandom(0, 10) andThen lowCut(0) andThen highCut(1000) andThen unsignedInteger(2)"
+          "34":
+            name: Mobile Data Status
+            action:
+              generator: "constant(1.0) andThen unsignedInteger(1)"
+      "05":
+        name: Voice Control
+        parameters:
+          "40":
+            name: Voice Command
+            action:
+              generator: "constant(1.0) andThen unsignedInteger(1)"
+          "41":
+            name: Command Recognition Status
+            action:
+              generator: "constant(1.0) andThen unsignedInteger(1)"
+          "42":
+            name: Voice Command Volume
+            action:
+              generator: "linear(0, 10.minutes) andThen lowCut(0) andThen highCut(100) andThen unsignedInteger(1)"
+          "43":
+            name: Microphone Status
+            action:
+              generator: "constant(1.0) andThen unsignedInteger(1)"
+      "06":
+        name: User Interface
+        parameters:
+          "50":
+            name: Screen Brightness
+            action:
+              generator: "linear(0, 5.minutes) andThen lowCut(0) andThen highCut(100) andThen unsignedInteger(1)"
+          "51":
+            name: Screen Resolution
+            action:
+              generator: "constant(1.0) andThen unsignedInteger(1)"
+          "52":
+            name: Touchscreen Status
+            action:
+              generator: "constant(1.0) andThen unsignedInteger(1)"
+          "53":
+            name: System Language
+            action:
+              generator: "constant(0.0) andThen unsignedInteger(1)"
+      "09":
+        name: Metadata
+        parameters:
+          "02":
+            name: Vehicle ID - ABCD1234
+            action:
+              generator: "constant(1.0) andThen unsignedInteger(1)"
+          "0A":
+            name: ECU Name - Infotainment Module
+            action:
+              generator: "constant(1.0) andThen unsignedInteger(1)"

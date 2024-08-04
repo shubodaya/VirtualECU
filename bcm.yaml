@@ -1,0 +1,44 @@
+controllers:
+  "7C2":
+    name: Body Control Module
+    services:
+      "06":
+        name: Live Data
+        action:
+          generator: "constant(1.0) andThen unsignedInteger(1)"
+        parameters:
+          "01":
+            name: Headlight Status
+            action:
+              generator: "randomWalk(0, 0, 2, 0.0 -> 0.0, 1.0 -> 1.0) andThen unsignedInteger(1)"
+          "02":
+            name: Window Position Front Left
+            action:
+              generator: "linear(0, 1.hour) andThen gaussianRandom(0, 2) andThen lowCut(0) andThen highCut(255) andThen unsignedInteger(1)"
+          "03":
+            name: Window Position Front Right
+            action:
+              generator: "linear(0, 1.hour) andThen gaussianRandom(0, 2) andThen lowCut(0) andThen highCut(255) andThen unsignedInteger(1)"
+          "04":
+            name: Door Lock Status
+            action:
+              generator: "randomWalk(0, 0, 2, 0.0 -> 0.0, 1.0 -> 1.0) andThen unsignedInteger(1)"
+          "05":
+            name: Interior Light Status
+            action:
+              generator: "randomWalk(0, 0, 2, 0.0 -> 0.0, 1.0 -> 1.0) andThen unsignedInteger(1)"
+          "06":
+            name: Trunk Open Status
+            action:
+              generator: "randomWalk(0, 0, 2, 0.0 -> 0.0, 1.0 -> 1.0) andThen unsignedInteger(1)"
+      "05":
+        name: Metadata
+        parameters:
+          "02":
+            name: Vehicle ID - ABCD123
+            action:
+              generator: "constant(1.0) andThen unsignedInteger(1)"
+          "0A":
+            name: ECU Name - Body Control Module
+            action:
+              generator: "constant(1.0) andThen unsignedInteger(1)"

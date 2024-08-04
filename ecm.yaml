@@ -1,0 +1,48 @@
+controllers:
+  "7E0":
+    name: Engine
+    services:
+      "01":
+        name: Live Data
+        action:
+          generator: "constant(1.0) andThen unsignedInteger(1)"
+        parameters:
+          "05":
+            name: Coolant Temperature
+            action:
+              generator: "linear(0, 1.hour) andThen gaussianRandom(0, 2) andThen lowCut(-40) andThen highCut(125) andThen unsignedInteger(1)"
+          "0C":
+            name: Engine RPM
+            action:
+              generator: "sine(30.seconds) andThen scale(1000) andThen unsignedInteger(1)"
+          "0D":
+            name: Vehicle Speed
+            action:
+              generator: "saw(1.minute) andThen scale(50) andThen unsignedInteger(1)"
+          "11":
+            name: Throttle Position
+            action:
+              generator: "sine(1.minute) andThen scale(255) andThen unsignedInteger(1)"
+          "2F":
+            name: Fuel Tank Level
+            action:
+              generator: "saw(2.hours) andThen scale(255) andThen unsignedInteger(1)"
+          "15":
+            name: Fuel Pressure
+            action:
+              generator: "linear(0, 1.hour) andThen gaussianRandom(0, 5) andThen lowCut(-10) andThen highCut(100) andThen unsignedInteger(1)"
+          "3D":
+            name: Oil Pressure
+            action:
+              generator: "linear(0, 1.hour) andThen gaussianRandom(0, 5) andThen lowCut(-10) andThen highCut(80) andThen unsignedInteger(1)"
+      "09":
+        name: Metadata
+        parameters:
+          "02":
+            name: Vehicle ID - ABCD1234
+            action:
+              generator: "constant(1.0) andThen unsignedInteger(1)"
+          "0A":
+            name: ECU Name - Engine Controller Unit
+            action:
+              generator: "constant(1.0) andThen unsignedInteger(1)"

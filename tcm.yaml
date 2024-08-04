@@ -1,0 +1,41 @@
+controllers:
+  "7E1":
+    name: Transmission Control Module
+    services:
+      "01":
+        name: Live Data
+        action:
+          generator: "constant(1.0) andThen unsignedInteger(1)"
+        parameters:
+          "0A":
+            name: Gear Position
+            action:
+              generator: "linear(0, 1.minute) andThen gaussianRandom(0, 1) andThen lowCut(0) andThen highCut(255) andThen unsignedInteger(1)"
+          "0B":
+            name: Transmission Fluid Temperature
+            action:
+              generator: "sine(1.minute) andThen scale(255) andThen unsignedInteger(1)"
+          "0C":
+            name: Torque Converter Lock-up
+            action:
+              generator: "constant(1.0) andThen unsignedInteger(1)"
+          "0D":
+            name: Transmission Oil Pressure
+            action:
+              generator: "saw(2.hours) andThen scale(255) andThen unsignedInteger(1)"
+          "0E":
+            name: Transmission Mode
+            action:
+              generator: "linear(0, 1.hour) andThen gaussianRandom(0, 5) andThen lowCut(-10) andThen highCut(100) andThen unsignedInteger(1)"
+      "09":
+        name: Metadata
+        parameters:
+          "02":
+            name: Vehicle ID - ABCD1234
+            action:
+              generator: "constant(1.0) andThen unsignedInteger(1)"
+          "0A":
+            name: ECU Name - Transmission Control Module
+            action:
+              generator: "constant(1.0) andThen unsignedInteger(1)"
+

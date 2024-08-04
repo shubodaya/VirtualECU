@@ -1,0 +1,40 @@
+controllers:
+  "7D4":
+    name: Airbag Control Module
+    services:
+      "04":
+        name: Live Data
+        action:
+          generator: "constant(1.0) andThen unsignedInteger(1)"
+        parameters:
+          "01":
+            name: Front Airbag Status
+            action:
+              generator: "randomWalk(0, 0, 2, 0.0 -> 0.0, 1.0 -> 1.0) andThen unsignedInteger(1)"
+          "02":
+            name: Side Airbag Status
+            action:
+              generator: "randomWalk(0, 0, 2, 0.0 -> 0.0, 1.0 -> 1.0) andThen unsignedInteger(1)"
+          "03":
+            name: Curtain Airbag Status
+            action:
+              generator: "randomWalk(0, 0, 2, 0.0 -> 0.0, 1.0 -> 1.0) andThen unsignedInteger(1)"
+          "04":
+            name: Airbag Deployment Count
+            action:
+              generator: "linear(0, 1.hour) andThen gaussianRandom(0, 2) andThen lowCut(0) andThen highCut(255) andThen unsignedInteger(1)"
+          "05":
+            name: Seatbelt Status
+            action:
+              generator: "constant(1.0) andThen unsignedInteger(1)"
+      "05":
+        name: Metadata
+        parameters:
+          "02":
+            name: Vehicle ID - ABCD5678
+            action:
+              generator: "constant(1.0) andThen unsignedInteger(1)"
+          "0A":
+            name: ECU Name - Airbag Control Module
+            action:
+              generator: "constant(1.0) andThen unsignedInteger(1)"
