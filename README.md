@@ -1,6 +1,5 @@
-# virtualECU
+# VirtualECU
 Automotive Virtual ECU for CAN bus communication
-
 
 ## Description
 This project is a modified version of the original [VirtualECU](https://github.com/pschichtel/VirtualECU) repository. It is designed to implement a software-defined firewall for automotive ECUs.
